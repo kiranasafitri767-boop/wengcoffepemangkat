@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weng Coffee | Sejarah & Cita Rasa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3d2b1f; /* Cokelat Tua */
+            --accent: #d4a373;  /* Cokelat Keemasan */
+            --light: #fefae0;   /* Krem Muda */
+            --dark: #1a120b;    /* Hitam Kopi */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+
+        /* Navigasi */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo span { color: var(--accent); }
+
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin-top: 10px; }
+
+        /* Section Global */
+        .section { padding: 100px 10%; }
+        .title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Sejarah */
+        .history-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .history-text h2 { color: var(--primary); margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+        .history-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: -20px 20px 0 var(--accent);
+        }
+
+        /* Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .menu-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .menu-card:hover { transform: translateY(-10px); }
+        .menu-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .price { font-weight: bold; color: var(--accent); font-size: 1.2rem; }
+
+        /* Kontak & Alamat */
+        .contact-container {
+            background: var(--primary);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
+        .map {
+            width: 100%;
+            height: 250px;
+            background: #ccc;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        footer { text-align: center; padding: 30px; background: var(--dark); color: white; margin-top: 50px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .history-content, .contact-container { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">WENG<span>COFFEE</span></div>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#history">Sejarah</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact">Alamat</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <h1>Weng Coffee</h1>
+        <p>#Sehabatngopibareng</p>
+    </header>
+
+    <section id="history" class="section">
+        <h2 class="title">Sejarah Kami</h2>
+        <div class="history-content">
+            <div class="history-img">
+               
+            <img src="c:\Users\SMKN1 TEBAS\Pictures\weng coffee.webp"alt="Kedai Kopi Tua">
+            </div>
+            <div class="history-text">
+                <h2>Sejak 1970</h2>
+                <p>Weng Coffee memiliki sejarah panjang yang berakar sejak tahun 1970 di Pontianak berikut adalah garis waktu perkembangan usahanya:</p>
+                <br>
+                <p>Awal Berdiri (1970): Bermula sebagai toko yang menjual produk kopi bubuk tradisional berkualitas untuk masyrakat Pontianak, Nama "Weng" sendiri diambil dari nama kakek sang pendiri. Transformasi (2020):
+                  Mulai merambah ke konsep coffee shop modern yang kekinian di Pontianak untuk beradaptasi dengan tren pasar. Ekspansi (2023-2026): Membuka outlet ke-7 dengan konsep rooftop di Tanray II, Pontianak pada 7 Januari 2023. Membuka cabang pertama di Singkawang pada 10 Juni 2025. Terus berekspansi ke wilayah lain seperti Tebas(November 2025) dan Sanggau
+                 Hingga awal tahun 2026,weng coffe telah mengoperasikan puluhan outlet (tercatat 33 cabang di pontianak pada akhir 2025) di seluruh Kalimantan Barat. </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section" style="background: #fdf8f3; filter: drop-shadow(10%);">
+        <h2 class="title">MENU</h2>
+    <section id="history" class="section">
+        <h2 class="title">DESSERT</h2>
+        <div class="history-content">
+            <div class="history-img">
+               
+            <img src="c:\Users\SMKN1 TEBAS\Downloads\Menu-Dessert-Uk-A3-Balai-Karangan.jpg"alt="">
+            </div>
+            <div class="history-text">
+                <h2>PUDDING</h2>
+                <div>
+                <h3 class="text-2xl font-serif mb-6 border-b pb-2"></h3>
+                <ul class="space-y-6">
+                    <li class="flex justify-between items-center">
+                    <div class="grid md:grid-cols-2 gap-12"></div> 
+                            <p class="font-semibold text-lg">Pudding Coklat</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pudding Taro</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pudding Matcha</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pudding Mango</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pudding Grass Jelly</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-2xl font-serif mb-6 border-b pb-2">SNOW ICE</h3>
+                <ul class="space-y-6">
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Volcano Choco</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Volcano Mango</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">volcano Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">volcano Yogurt</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">volcano Strawberry Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+            </div>
+        </div>
+        <br>
+        <div>
+                <h3 class="text-2xl font-serif mb-6 border-b pb-2">ICE CREAM</h3>
+                <ul class="space-y-6">
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Choco Ice Cream</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Vanilla Ice Cream</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Strawberry Ice Cream</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+            </div>
+        </div>
+        <br>
+        <div>
+                <h3 class="text-2xl font-serif mb-6 border-b pb-2">SOFT CREAM</h3>
+                <ul class="space-y-6">
+                    <br>
+                    <h4 class="text-2xl font-serif mb-6 border-b pb-2">CHOCO CREAM</h4>
+                <ul class="space-y-6">
+                    <li class="flex justify-between items-center">
+                    <div class="grid md:grid-cols-2 gap-12"></div> 
+                            <p class="font-semibold text-lg">Opera Sweet Choco</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 12k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Emilia Choco Browny</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Colosseum Choco Almond</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Hokkaido Crunchy Choco</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Belgium Choco Berries</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Aquila Choco Mangoes</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <div>
+                <h4 class="text-2xl font-serif mb-6 border-b pb-2">VANILLA CREAM</h4>
+                <ul class="space-y-6">
+                    <li class="flex justify-between items-center">
+                    <div class="grid md:grid-cols-2 gap-12"></div> 
+                            <p class="font-semibold text-lg">Liberty Vanilla</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 12k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pisa vanilla Choco</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Eiffel Vanilla Berries</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Sky Tree Vanilla Mangoes</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Merlion Vanilla Almond</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Khalifa Vanilla Browny</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                </ul>
+    </section>
+       
+
+    <section id="history" class="section">
+        <h2 class="title">Dish & Snack</h2>
+        <div class="history-content">
+            <div class="history-img">
+               
+            <img src="c:\Users\SMKN1 TEBAS\Downloads\Menu-Dish-&-Snack-A3-Balai-Karangan.jpg"alt="">
+            </div>
+            <div class="history-text">
+                <h2></h2>
+                <div>
+                <h3 class="text-2xl font-serif mb-6 border-b pb-2">MAKANAN</h3>
+                <ul class="space-y-6">
+                    <li class="flex justify-between items-center">
+                    <div class="grid md:grid-cols-2 gap-12"></div> 
+                            <p class="font-semibold text-lg">Nasi Goreng Weng Coffee</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Goreng Petai Teri</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 30k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Goreng Sambal Matah</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Goreng Ebi</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 30k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Capcay Ayam</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Ayam Chili Oil</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 30k</span>
+                    </li>
+                </ul>
+            </div>
+            </div>  
+            </div>
+        </div>
+        <br>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Chicken Black Sauce</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 32k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Chicken Steak</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 32k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Ayam Saus Mentega</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 30k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Chicken Cream Mushroom</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 32k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Beef Black Sauce</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 35k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Ayam Teriyaki</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 30k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Spaghetti Carbonara</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 30k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Kwetiaw Goreng/Siram</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Mie Goreng Jawa Ayam Crispy</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Kwetiaw Kuah Ayam</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Indomie Goreng/Rebus Ayam Crispy</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Sarden</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 30k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Ayam Limau</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Beef Limau</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 35k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Ayam Chili Padi</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Nasi Beef Chili Padi</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 35k</span>
+                    </li>
+                    <br>
+                     <h3 class="text-2xl font-serif mb-6 border-b pb-2">SNACKS</h3>
+                     <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Kentang Original/Balado</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Tahu Goreng Crispy</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 16k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Chicken Pop</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Bakwan Goreng</p>
+                            <p class="font-semibold text-lg">5pcs</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 16k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pisang Goreng</p>
+                             <p class="font-semibold text-lg">Srikaya/Keju/Coklat</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Singkong Thai</p>
+                             <p class="font-semibold text-lg">Keju/Coklat/Balado</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Chicken Potato Cheese</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                    <br>
+                    <h3 class="text-2xl font-serif mb-6 border-b pb-2">DIMSUM</h3>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Mantau Kukus/Goreng</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pau Char Siu</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pau Telur Asin</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pau Red Bean</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Hakau</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Siomay</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Lumpia Basah</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <br>
+                    <h3 class="text-2xl font-serif mb-6 border-b pb-2">TOAST</h3>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Crunchy Choco Almond</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 22k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Spicy Beef Toast</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li>
+                     <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Crispy Chicken Toast</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 28k</span>
+                    </li> <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Srikaya Almond Toast</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 27k</span>
+                    </li>
+                     <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Egg and Cheese Toast</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li>
+    </section>
+
+    <section id="history" class="section">
+        <h2 class="title">Drink</h2>
+        <div class="history-content">
+            <div class="history-img">
+               
+            <img src="c:\Users\SMKN1 TEBAS\Downloads\Menu-Drink-Uk-A3-Balai-Karangan.jpg"alt="">
+            </div>
+            <div class="history-text">
+                 <h2></h2>
+                <div>
+                <h3 class="text-2xl font-serif mb-6 border-b pb-2">KOPI SERIES</h3>
+                
+                    <li class="flex justify-between items-center">
+                    <div class="grid md:grid-cols-2 gap-12"></div> 
+                            <p class="font-semibold text-lg">Es Kopi Susu</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 20 & L 24</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Es Kopi Regal</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Es Kopi Coklat</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Es Kopi Matcha</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Es kopi Macchiato</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Es Kopi Vanilla Float</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Es Kopi Avocado</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 30 & L 34</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Klepon Coffee Float</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                </ul>
+            </div>
+            </div>  
+            </div>
+            <div>
+                <h3 class="text-2xl font-serif mb-6 border-b pb-2">CHOCO SERIES</h3>
+                
+                    <li class="flex justify-between items-center">
+                    <div class="grid md:grid-cols-2 gap-12"></div> 
+                            <p class="font-semibold text-lg">Choco Matcha</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 24 & L 28</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Avocado Choco</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Strawberry Choco Float</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Klepon Choco float</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                    <br>
+                    <h3 class="text-2xl font-serif mb-6 border-b pb-2">MILK SERIES</h3>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Japanese Matcha</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 24 & L 28</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Vanilla Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 24 & L 28</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Taro Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 24 & L 28</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Choco Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Klepon Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Avocado Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Mango Milk Cheese</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Strawberry Milk Cheese</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Strawberry Float Milk Way</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Klepon Macchiato</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 26 & L 30</span>
+                    </li>
+                </ul>
+            </div>
+            <br>
+                    <h3 class="text-2xl font-serif mb-6 border-b pb-2">TEA SERIES</h3>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Lychee Tea</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Strawberry Tea</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Mango Tea</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Apple Punch</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Mango Macchiato</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 24 & L 28</span>
+                    </li>
+                    <br>
+                    <h3 class="text-2xl font-serif mb-6 border-b pb-2">YOGURT SERIES</h3>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Yogurt Drink</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Yogurt Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 24 & L 28</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Lychee Yogurt</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Strawberry Yogurt</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Mango Yogurt</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Lemon Yogurt</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Apple Yogurt</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 22 & L 26</span>
+                    </li>
+                    <br>
+                    <h3 class="text-2xl font-serif mb-6 border-b pb-2">BROWN SUGAR SERIES</h3>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Brown Sugar Bubble Coffee Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Brown Sugar Bubble Matcha</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Brown Sugar Bubble Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Brown Sugar Klepon</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">M 28 & L 32</span>
+                    </li>
+    </section>
+
+
+    <section id="history" class="section">
+        <h2 class="title">PASTRY</h2>
+        <div class="history-content">
+            <div class="history-img">
+               
+            <img src="c:\Users\SMKN1 TEBAS\Downloads\Menu-Drink-Uk-A3-Balai-Karangan.jpg"alt="">
+            </div>
+            <div class="history-text">
+                 <h3 class="text-2xl font-serif mb-6 border-b pb-2">PASTRY</h3>
+                     <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Signature Croissant</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Almond Croissant</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Croissant Choco Chips</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Croissant Choco Stick</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Choco Fla Vanilla</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Cinnamon Croissant</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Cromboloni Choco Chips</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 22k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Cromboloni Almond</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 22k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Pie Premium</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 16k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Raisin Milk</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 24k</span>
+                    </li><li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Mexico Choco</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 23k</span>
+                    </li><li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Coffee Weng</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 27k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Polo Cheese</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 25k</span>
+                    </li><li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Egg Tart</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 12k</span>
+                    </li>  
+            </div>
+        </div>
+    </section>
+
+
+    <section id="history" class="section">
+        <h2 class="title">SIGNATURE</h2>
+        <div class="history-content">
+            <div class="history-img">
+               
+            <img src="c:\Users\SMKN1 TEBAS\Downloads\WhatsApp Image 2026-04-07 at 16.32.03.jpeg"alt="">
+            </div>
+            <div class="history-text">
+                <h2></h2>
+                <div>
+                    <h3 class="text-2xl font-serif mb-6 border-b pb-2">signature</h3>
+                <ul class="space-y-6">
+                    <li class="flex justify-between items-center">
+                    <div class="grid md:grid-cols-2 gap-12"></div> 
+                            <p class="font-semibold text-lg">Americano</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 16k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Cappucino</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 15k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Coffee Latte</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Moccacino</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 15k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Afogatto</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Matcha Latte</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                </ul>
+                
+            </div>
+            </div>  
+            </div>
+        </div>
+        <br>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Taro Latte</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Klepon Latte</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Choco Latte</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <br>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Kopi Weng</p>
+                             <p class="font-semibold text-lg">(Saring/Bubuk)</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 15k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Kopi Arabica</p>
+                             <p class="font-semibold text-lg">(Saring/Bubuk)</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Kopi Arabica Gula Aren</p>
+                             <p class="font-semibold text-lg">(Saring/Bubuk)</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Kopi Susu Arabica Gula Aren</p>
+                             <p class="font-semibold text-lg">(Saring/Bubuk)</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 20k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Kopi Susu Arabica</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 18k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Teh Susu Uncle Weng</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 16k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Es Teh Uncle Weng</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 8k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Teh Panas Uncle Weng</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 8k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Air Mineral</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 8k</span>
+                    </li>
+                    <br>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Arabika Emas Weng Coffee</p>
+                             <p class="font-semibold text-lg">500 Gram</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 102k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Robusta Premium Weng Coffee</p>
+                             <p class="font-semibold text-lg">500 Gram</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 96k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Robusta Weng Coffee</p>
+                             <p class="font-semibold text-lg">500 Gram</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 78k</span>
+                    </li>
+                    <li class="flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-lg">Robusta Weng Coffee</p>
+                             <p class="font-semibold text-lg">200 Gram</p>
+                            <p class="text-sm text-stone-500"></p>
+                        </div>
+                        <span class="font-bold text-amber-800">Rp 29k</span>
+                    </li>
+    </section>
+
+
+    <section id="contact" class="section">
+        <h2 class="title">Temukan Kami</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Kunjungi Kedai Kami</h3>
+                <p><strong>Alamat:</strong><br>Jalan Moh. Sohor, Pemangkat, tepat di depan Pantai Sinam.</p>
+                <br>
+                <p><strong>Jam Operasional:</strong><br>24 Jam</p>
+                <br>
+                <p><strong>WhatsApp:</strong><br>0821-8988-7839. </p>
+            </div>
+            <div class="map"> 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.979144849672!2d108.9714083!3d1.1751548000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31e483001fab844d%3A0x3fc5a9c397d6f5b0!2sWeng%20coffee%20pemangkat!5e0!3m2!1sid!2sid!4v1770973326262!5m2!1sid!2sid" width="120" height="120px" style="border:0;" allowfullscreen="cover" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>    
+        </div>
+    </section>
+
+    <footer>
+       <p>&copy; 2026 Kopi Jiwa Muda. Dibuat dengan cinta untuk pecinta kopi.</p>
+    </footer>
+
+</body>
+</html>
